@@ -29,9 +29,8 @@ public class InventarEintrag {
 
     @Override
     public String toString() {
-        return "InventarEintrag{" +
-                "bezeichnung='" + bezeichnung + '\'' +
-                ", anzahl=" + anzahl +
-                '}';
+        return "InventarEintrag{"
+                + "bezeichnung='" + bezeichnung + '\''
+                + ", anzahl=" + anzahl +'}';
     }
 }
