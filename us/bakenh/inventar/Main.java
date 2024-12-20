@@ -1,5 +1,9 @@
 package us.bakenh.inventar;
 
+import us.bakenh.inventar.funktion.AuflistenInventarFunktion;
+import us.bakenh.inventar.funktion.HinzufuegenInventarFunktion;
+import us.bakenh.inventar.funktion.LoeschInventarFunktion;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -30,52 +34,15 @@ public class Main {
                     return;
 
                 case "a":
-
-                    print("\nEintrag hinzufügen gewählt.");
-
-                    String bezeichnung = input("Gegenstands-Bezeichnung: ", scanner);
-                    Number anzahl = inputNumber("Gegenstands-Anzahl: ", scanner);
-
-                    eintraege.add(new InventarEintrag(bezeichnung, anzahl.intValue()));
-
-                    print("Eintrag hinzugefügt: " + bezeichnung + " (" + anzahl + ")");
-
+                    new HinzufuegenInventarFunktion(eintraege, scanner).ausfuehren();
                     break;
 
                 case "r":
-
-                    print("\nEintrag auflisten gewählt.");
-                    print("Aktuelle Einträge:");
-
-                    for (int i = 0; i < eintraege.size(); i++) {
-                        print(i + 1 + ": " + eintraege.get(i));
-                    }
-
+                    new AuflistenInventarFunktion(scanner, eintraege).ausfuehren();
                     break;
 
                 case "d":
-
-                    print("\nEintrag löschen gewählt.");
-                    if (eintraege.isEmpty()) {
-                        print("Keine Einträge zum Löschen.");
-                        break;
-                    }
-
-                    print("Aktuelle Einträge:");
-
-                    for (int i = 0; i < eintraege.size(); i++) {
-                        print(i + 1 + ": " + eintraege.get(i));
-                    }
-
-                    int index = inputNumber("Nummer des zu löschenden Eintrags: ", scanner).intValue() - 1;
-
-                    if (index >= 0 && index < eintraege.size()) {
-                        InventarEintrag entfernt = eintraege.remove(index);
-                        print("Eintrag entfernt: " + entfernt);
-                    } else {
-                        print("Ungültige Nummer.");
-                    }
-
+                    new LoeschInventarFunktion(scanner, eintraege).ausfuehren();
                     break;
 
                 default:
