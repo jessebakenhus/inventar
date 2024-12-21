@@ -4,6 +4,8 @@ import us.bakenh.inventar.funktion.AuflistenInventarFunktion;
 import us.bakenh.inventar.funktion.HinzufuegenInventarFunktion;
 import us.bakenh.inventar.funktion.LoeschInventarFunktion;
 import us.bakenh.inventar.persistence.InventarDao;
+import us.bakenh.inventar.presentation.ConsoleIO;
+import us.bakenh.inventar.presentation.IOBase;
 
 import java.util.Scanner;
 
@@ -19,28 +21,28 @@ public class MainApp {
         // DAO initialisieren
         InventarDao inventarDao = new InventarDao();
 
-        Scanner scanner = new Scanner(System.in);
+        // IO Base initialisieren
+        IOBase io = initialisiereIOBase();
 
-        print("\nT U T O R I A L");
-        print("---------------\n");
-        print("Funktionen:");
-        print("1: Programm beenden (q)");
-        print("2: Eintrag hinzufügen (a)");
-        print("3: Einträge auflisten (r)");
-        print("4: Eintrag löschen (d)");
+        io.print("\nT U T O R I A L");
+        io.print("---------------\n");
+        io.print("Funktionen:");
+        io.print("1: Programm beenden (q)");
+        io.print("2: Eintrag hinzufügen (a)");
+        io.print("3: Einträge auflisten (r)");
+        io.print("4: Eintrag löschen (d)");
 
         while (true) {
-            String funktion = input("\nWähle eine Funktion: ", scanner);
+            String funktion = io.input("\nWähle eine Funktion: ");
 
             switch (funktion) {
                 case "q":
 
-                    print("\nProgramm wird beendet.");
-                    scanner.close();
+                    io.print("\nProgramm wird beendet.");
                     return;
 
                 case "a":
-                    new HinzufuegenInventarFunktion(inventarDao, scanner).ausfuehren();
+                    new HinzufuegenInventarFunktion(inventarDao, io).ausfuehren();
                     break;
 
                 case "r":
@@ -48,34 +50,17 @@ public class MainApp {
                     break;
 
                 case "d":
-                    new LoeschInventarFunktion(inventarDao, scanner).ausfuehren();
+                    new LoeschInventarFunktion(inventarDao, io).ausfuehren();
                     break;
 
                 default:
-                    print("Ungültige Auswahl! Bitte erneut versuchen.");
+                    io.print("Ungültige Auswahl! Bitte erneut versuchen.");
                     break;
             }
         }
     }
 
-    private static void print(String string) {
-        System.out.println(string);
-    }
-
-    private static String input(String prompt, Scanner scanner) {
-        System.out.print(prompt);
-        return scanner.nextLine().trim();
-    }
-
-    private static Number inputNumber(String prompt, Scanner scanner) {
-
-        System.out.print(prompt);
-        String string = scanner.nextLine().trim();
-
-        try {
-            return Integer.parseInt(string);
-        } catch (NumberFormatException e) {
-            throw new RuntimeException("Ungültige Eingabe! Bitte eine Zahl eingeben.", e);
-        }
+    private IOBase initialisiereIOBase() {
+        return new ConsoleIO();
     }
 }

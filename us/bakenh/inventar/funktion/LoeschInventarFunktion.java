@@ -2,43 +2,43 @@ package us.bakenh.inventar.funktion;
 
 import us.bakenh.inventar.domain.model.InventarEintrag;
 import us.bakenh.inventar.persistence.InventarDao;
+import us.bakenh.inventar.presentation.IOBase;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class LoeschInventarFunktion implements InventarFunktion {
 
     private final InventarDao inventarDao;
 
-    private final Scanner scanner;
+    private final IOBase io;
 
-    public LoeschInventarFunktion(InventarDao inventarDao, Scanner scanner) {
+    public LoeschInventarFunktion(InventarDao inventarDao, IOBase ioBase) {
         this.inventarDao = inventarDao;
-        this.scanner = scanner;
+        this.io = ioBase;
     }
 
     @Override
     public void ausfuehren() {
 
-        print("\nEintrag löschen gewählt.");
+        io.print("\nEintrag löschen gewählt.");
         if (inventarDao.getAllEintraege().isEmpty()) {
-            print("Keine Einträge zum Löschen.");
+            io.print("Keine Einträge zum Löschen.");
             return;
         }
 
-        print("Aktuelle Einträge:");
+        io.print("Aktuelle Einträge:");
 
         for (int i = 0; i < inventarDao.getAllEintraege().size(); i++) {
-            print(i + 1 + ": " + inventarDao.getEintragByIndex(i));
+            io.print(i + 1 + ": " + inventarDao.getEintragByIndex(i));
         }
 
-        int index = inputNumber("Nummer des zu löschenden Eintrags: ", scanner).intValue() - 1;
+        int index = io.inputNumber("Nummer des zu löschenden Eintrags: ") - 1;
 
         if (index >= 0 && index < inventarDao.getAllEintraege().size()) {
             InventarEintrag entfernt = inventarDao.deleteEintragByIndex(index);
-            print("Eintrag entfernt: " + entfernt);
+            io.print("Eintrag entfernt: " + entfernt);
         } else {
-            print("Ungültige Nummer.");
+            io.print("Ungültige Nummer.");
         }
     }
 }
