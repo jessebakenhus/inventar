@@ -1,4 +1,4 @@
-package us.bakenh.inventar;
+package us.bakenh.inventar.domain.model;
 
 public class InventarEintrag {
 

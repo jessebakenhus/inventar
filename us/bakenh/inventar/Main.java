@@ -3,16 +3,15 @@ package us.bakenh.inventar;
 import us.bakenh.inventar.funktion.AuflistenInventarFunktion;
 import us.bakenh.inventar.funktion.HinzufuegenInventarFunktion;
 import us.bakenh.inventar.funktion.LoeschInventarFunktion;
+import us.bakenh.inventar.persistence.InventarDao;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        List<InventarEintrag> eintraege = new ArrayList<>();
+        InventarDao inventarDao = new InventarDao();
         Scanner scanner = new Scanner(System.in);
 
         print("\nT U T O R I A L");
@@ -34,15 +33,15 @@ public class Main {
                     return;
 
                 case "a":
-                    new HinzufuegenInventarFunktion(eintraege, scanner).ausfuehren();
+                    new HinzufuegenInventarFunktion(inventarDao, scanner).ausfuehren();
                     break;
 
                 case "r":
-                    new AuflistenInventarFunktion(scanner, eintraege).ausfuehren();
+                    new AuflistenInventarFunktion(inventarDao, scanner).ausfuehren();
                     break;
 
                 case "d":
-                    new LoeschInventarFunktion(scanner, eintraege).ausfuehren();
+                    new LoeschInventarFunktion(inventarDao, scanner).ausfuehren();
                     break;
 
                 default:

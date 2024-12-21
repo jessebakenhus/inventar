@@ -1,19 +1,20 @@
 package us.bakenh.inventar.funktion;
 
-import us.bakenh.inventar.InventarEintrag;
+import us.bakenh.inventar.domain.model.InventarEintrag;
+import us.bakenh.inventar.persistence.InventarDao;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class AuflistenInventarFunktion implements InventarFunktion {
 
+    private final InventarDao inventarDao;
+
     private final Scanner scanner;
 
-    private final List<InventarEintrag> eintraege;
-
-    public AuflistenInventarFunktion(Scanner scanner, List<InventarEintrag> eintraege) {
+    public AuflistenInventarFunktion(InventarDao inventarDao, Scanner scanner) {
+        this.inventarDao = inventarDao;
         this.scanner = scanner;
-        this.eintraege = eintraege;
     }
 
     @Override
@@ -22,8 +23,8 @@ public class AuflistenInventarFunktion implements InventarFunktion {
         System.out.println("\nEintrag auflisten gewählt.") ;
         System.out.println("Aktuelle Einträge:");
 
-        for (int i = 0; i < eintraege.size(); i++) {
-            System.out.println(i + 1 + ": " + eintraege.get(i));
+        for (int i = 0; i < inventarDao.getAllEintraege().size(); i++) {
+            System.out.println(i + 1 + ": " + inventarDao.getAllEintraege().size());
         }
 
     }
