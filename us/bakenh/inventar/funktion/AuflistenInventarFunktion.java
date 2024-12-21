@@ -1,20 +1,13 @@
 package us.bakenh.inventar.funktion;
 
-import us.bakenh.inventar.domain.model.InventarEintrag;
 import us.bakenh.inventar.persistence.InventarDao;
-
-import java.util.List;
-import java.util.Scanner;
 
 public class AuflistenInventarFunktion implements InventarFunktion {
 
     private final InventarDao inventarDao;
 
-    private final Scanner scanner;
-
-    public AuflistenInventarFunktion(InventarDao inventarDao, Scanner scanner) {
+    public AuflistenInventarFunktion(InventarDao inventarDao) {
         this.inventarDao = inventarDao;
-        this.scanner = scanner;
     }
 
     @Override

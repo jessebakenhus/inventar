@@ -37,7 +37,7 @@ public class Main {
                     break;
 
                 case "r":
-                    new AuflistenInventarFunktion(inventarDao, scanner).ausfuehren();
+                    new AuflistenInventarFunktion(inventarDao).ausfuehren();
                     break;
 
                 case "d":
