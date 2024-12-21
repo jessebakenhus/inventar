@@ -24,15 +24,8 @@ public class MainApp {
         // IO Base initialisieren
         IOBase io = initialisiereIOBase();
 
-        io.print("\nT U T O R I A L");
-        io.print("---------------\n");
-        io.print("Funktionen:");
-        io.print("1: Programm beenden (q)");
-        io.print("2: Eintrag hinzufügen (a)");
-        io.print("3: Einträge auflisten (r)");
-        io.print("4: Eintrag löschen (d)");
-
         while (true) {
+
             String funktion = io.input("\nWähle eine Funktion: ");
 
             switch (funktion) {

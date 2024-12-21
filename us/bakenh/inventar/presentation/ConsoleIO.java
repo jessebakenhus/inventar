@@ -7,7 +7,16 @@ public class ConsoleIO implements IOBase {
     private final Scanner scanner;
 
     public ConsoleIO() {
+
         this.scanner = new Scanner(System.in);
+
+        print("\nT U T O R I A L");
+        print("---------------\n");
+        print("Funktionen:");
+        print("1: Programm beenden (q)");
+        print("2: Eintrag hinzufügen (a)");
+        print("3: Einträge auflisten (r)");
+        print("4: Eintrag löschen (d)");
     }
 
     @Override
