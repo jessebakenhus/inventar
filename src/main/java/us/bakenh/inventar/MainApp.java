@@ -3,11 +3,10 @@ package us.bakenh.inventar;
 import us.bakenh.inventar.funktion.AuflistenInventarFunktion;
 import us.bakenh.inventar.funktion.HinzufuegenInventarFunktion;
 import us.bakenh.inventar.funktion.LoeschInventarFunktion;
+import us.bakenh.inventar.persistence.DatabaseInventarDao;
 import us.bakenh.inventar.persistence.InventarDao;
 import us.bakenh.inventar.presentation.ConsoleIO;
 import us.bakenh.inventar.presentation.IOBase;
-
-import java.util.Scanner;
 
 public class MainApp {
 
@@ -19,7 +18,7 @@ public class MainApp {
     private void initializeApp() {
 
         // DAO initialisieren
-        InventarDao inventarDao = new InventarDao();
+        InventarDao inventarDao = new DatabaseInventarDao();
 
         // IO Base initialisieren
         IOBase io = initialisiereIOBase();

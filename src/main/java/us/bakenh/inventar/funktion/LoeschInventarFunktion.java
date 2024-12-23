@@ -2,6 +2,7 @@ package us.bakenh.inventar.funktion;
 
 import us.bakenh.inventar.domain.model.InventarEintrag;
 import us.bakenh.inventar.persistence.InventarDao;
+import us.bakenh.inventar.persistence.MemoryInventarDao;
 import us.bakenh.inventar.presentation.IOBase;
 
 public class LoeschInventarFunktion implements InventarFunktion {

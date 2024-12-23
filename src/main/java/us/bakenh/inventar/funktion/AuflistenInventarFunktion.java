@@ -1,5 +1,6 @@
 package us.bakenh.inventar.funktion;
 
+import us.bakenh.inventar.domain.model.InventarEintrag;
 import us.bakenh.inventar.persistence.InventarDao;
 
 public class AuflistenInventarFunktion implements InventarFunktion {
@@ -14,11 +15,14 @@ public class AuflistenInventarFunktion implements InventarFunktion {
     public void ausfuehren() {
 
         System.out.println("\nEintrag auflisten gewählt.") ;
-        System.out.println("Aktuelle Einträge:");
+        System.out.println("\nAktuelle Einträge:");
 
-        for (int i = 0; i < inventarDao.getAllEintraege().size(); i++) {
-            System.out.println(i + 1 + ": " + inventarDao.getAllEintraege().size());
+        int index = 1;
+
+        for (InventarEintrag inventarEintrag : inventarDao.getAllEintraege()) {
+
+            System.out.printf("%s. %s - %sx%n", index, inventarEintrag.getBezeichnung(), inventarEintrag.getAnzahl());
+            index++;
         }
-
     }
 }
