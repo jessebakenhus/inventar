@@ -1,5 +1,6 @@
 package us.bakenh.inventar.persistence;
 
+import us.bakenh.inventar.domain.model.ConfigModel;
 import us.bakenh.inventar.domain.model.InventarEintrag;
 
 import java.sql.*;
@@ -11,11 +12,11 @@ public class DatabaseInventarDao implements InventarDao {
 
     private final Connection con;
 
-    public DatabaseInventarDao() throws RuntimeException {
+    public DatabaseInventarDao(ConfigModel.DatabaseConfig database) throws RuntimeException {
 
-        String url = "jdbc:mysql://localhost:3306/yourdatabase"; // Replace with your database URL
-        String user = "root"; // Replace with your username
-        String password = "yourpassword"; // Replace with your password
+        String url = database.getUrl();
+        String user = database.getUsername();
+        String password = database.getPassword();
 
         try {
             this.con = DriverManager.getConnection(url, user, password);
