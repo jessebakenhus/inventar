@@ -1,2 +1,5 @@
 rootProject.name = 'inventar'
 
+include 'inventar-webserver'
+include 'inventar-webserver'
+
