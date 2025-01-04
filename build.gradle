@@ -25,8 +25,13 @@ repositories {
 dependencies {
 
     implementation 'mysql:mysql-connector-java:8.0.33'
-
     implementation 'org.yaml:snakeyaml:2.2'
+
+    /* Lombok */
+
+    compileOnly 'org.projectlombok:lombok:1.18.36'
+
+    annotationProcessor 'org.projectlombok:lombok:1.18.36'
 
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'

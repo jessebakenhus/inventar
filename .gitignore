@@ -1,0 +1,11 @@
+# Docker
+/mysql-data/
+
+# Gradle
+/build/
+**/build/
+/out
+.gradle
+
+# Idea
+.idea
