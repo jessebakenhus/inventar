@@ -1,4 +1,4 @@
-package us.bakenh.inventar.webapi.dto;
+package us.bakenh.inventar.application.service.dtos;
 
 import lombok.Data;
 import lombok.NonNull;
@@ -6,10 +6,11 @@ import lombok.NonNull;
 @Data
 public class InventarEintragDto {
 
-    private final int id;
+    private final Integer id;
 
     @NonNull
     private final String name;
 
-    private final int count;
+    @NonNull
+    private final Integer count;
 }

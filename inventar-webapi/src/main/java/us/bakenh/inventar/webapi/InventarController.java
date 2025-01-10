@@ -1,24 +1,27 @@
 package us.bakenh.inventar.webapi;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-import us.bakenh.inventar.webapi.dto.InventarDto;
-import us.bakenh.inventar.webapi.dto.InventarEintragDto;
+import us.bakenh.inventar.application.service.InventarService;
+import us.bakenh.inventar.application.service.dtos.InventarDto;
 
-import java.util.Collection;
 import java.util.List;
 
-@Controller
 @RestController
 public class InventarController {
 
+    @Autowired
+    private InventarService inventarService;
+
     @GetMapping(path = ApiPaths.API_LEVEL_1 + ApiPaths.INVENTAR)
-    public Collection<InventarDto> findAllInventarDtos() {
-
-        InventarEintragDto dummyEintragDto = new InventarEintragDto(1, "Apple MacBook Pro - M1 Pro - 2021", 1);
-
-        return List.of(new InventarDto(1, List.of(dummyEintragDto)));
+    public List<InventarDto> findAllInventarDtos() {
+        return inventarService.findAllInventare();
     }
 
+    @PostMapping(path = ApiPaths.API_LEVEL_1 + ApiPaths.INVENTAR)
+    public InventarDto createInventar(InventarDto inventarDto) {
+        return inventarService.createInventar(inventarDto);
+    }
 }

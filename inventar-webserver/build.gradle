@@ -10,8 +10,14 @@ repositories {
 dependencies {
 
     implementation project(':inventar-webapi')
+    implementation project(':inventar-persistence')
+    implementation project(':inventar-application-service')
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    /* MySQL Driver */
+    runtimeOnly 'com.mysql:mysql-connector-j'
 
     /* Swagger / OpenAPI */
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
