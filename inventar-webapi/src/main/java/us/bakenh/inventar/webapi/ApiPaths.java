@@ -6,5 +6,9 @@ public class ApiPaths {
 
     public final static String INVENTAR = "/inventar";
 
+    public static final String BY_ID = "/{id}";
 
+    public static final String BY_ENTRY_ID = "/{entry_id}";
+
+    public static final String ENTRY = "/entry";
 }

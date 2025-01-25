@@ -7,6 +7,7 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation project(path: ':inventar-application-service')
+    implementation project(path: ':inventar-persistence')
 
     compileOnly 'org.projectlombok:lombok:1.18.36'
 

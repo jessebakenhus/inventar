@@ -4,3 +4,5 @@ include 'inventar-application-service'
 include 'inventar-persistence'
 include 'inventar-webserver'
 include 'inventar-webapi'
+include 'inventar-security'
+
