@@ -2,6 +2,7 @@ rootProject.name = 'inventar'
 
 include 'inventar-application-service'
 include 'inventar-persistence'
+include 'inventar-ui'
 include 'inventar-webserver'
 include 'inventar-webapi'
 include 'inventar-security'
