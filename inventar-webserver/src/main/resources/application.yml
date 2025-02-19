@@ -11,6 +11,14 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: Ov23litQ6HC0DJULEKYV
+            client-secret: 5811d56e8352c63bbd088cb7918a9c6453ece4f9
+            scope: read:user, user:email
 server:
   tomcat:
     relaxed-query-chars: "[,]"

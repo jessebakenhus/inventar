@@ -12,8 +12,10 @@ dependencies {
     implementation project(':inventar-webapi')
     implementation project(':inventar-persistence')
     implementation project(':inventar-application-service')
+    implementation project(':inventar-security')
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
     /* MySQL Driver */
